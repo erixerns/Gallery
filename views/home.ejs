@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sujata Saha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/home.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/navbar.css" />
+  <script src="/lib/jquery.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <nav id="headingContainer" class="navbar navbar-expand-lg">
+    <div id="heading">
+      <a href="/" class="navbar-brand" >Sujata Saha</a>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#linkContainer" aria-controls="linkContainer" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">&times;</span>
+    </button>
+    
+    <div id="linkContainer" class="navbar navbar-collapse collapse">
+      <ul class="navbar-nav ml-auto">
+        <a id='gallery' class="nav-item nav-link" onclick="redirect('gallery')">Gallery</a>
+        <a id='recentWorks' class="nav-item nav-link" onclick="redirect()">Recent Works</a>
+        <a id='links' class="nav-item nav-link" onclick="redirect()">Links</a>
+        <a id='contact' class="nav-item nav-link" onclick="redirect()">Contact</a>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+</body>
+
+<script>
+  function redirect(address) {
+    if (address == undefined)
+      return '#';
+    window.location.assign(address);
+  }
+</script>
+
+</html>

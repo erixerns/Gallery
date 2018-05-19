@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>New Image</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/newImage.css" />
+  <script src="/lib/jquery.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+  <% include partials/navbar %>
+  <div class="container">
+    <form class="mx-auto form-row" action="/gallery" method="POST">
+      <h3>Add a new Image</h3>
+      <div class="form-group col-md-12">
+        <input type="text" name="title" id="imageTitle" class="form-control" placeholder="Title">
+      </div>
+      <div class="form-group col-md-12">
+        <input type="text" name="url" id="imageURL" class="form-control" placeholder="URL">
+      </div>
+      <select class="form-control form-group col-md-12" name="category" id="categoryOptions">
+        <option class="dropdown-item" id="defaultOption">Select Category</option>
+        <% categories.forEach(function(category){ %>
+          <option class="dropdown-item"><%= category.name.charAt(0).toUpperCase() + category.name.substr(1); %></option>
+        <% }); %>
+        <option class="dropdown-item">&plus; Add Category</option>
+      </select>
+      <div class="form-group col-md-8">
+        <input type="text" name="newCategory" id="newCategory" placeholder="Add Category" class="form-control d-none">
+      </div>      
+      <button class="btn btn-primary btn-sm d-none form-group col-md-4" type="button" id="revert">Back</button>
+      <button class="btn btn-info btn-lg form-control form-inline" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    $("#revert").click(function(){
+      $("#newCategory, #revert").addClass("d-none");
+      $("#categoryOptions").removeClass("d-none");
+      $("#defaultOption").attr("selected", true);
+    });
+
+    $('#categoryOptions').change(function() {
+      var val = $("#categoryOptions option:selected").text();
+      console.log(val);
+      if(val == "+ Add Category"){
+        $(this).addClass("d-none");
+        $("#newCategory, #revert").removeClass("d-none");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/navbar.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/gallery.css" />
+  <script src="/js/jquery.min.js"></script>
+  <script src="/lib/bootstrap.js"></script>
+</head>
+<body>
+<% include partials/navbar %>
+  <div class="jumbotron">
+    <h3>The Image Gallery!</h3>
+    <a href="/gallery/new" class="btn btn-info btn-lg">Add new</a>
+  </div>
+  <div class="container">
+    <% galleries.forEach(function(gallery){ %>
+      <h3 class="text-muted"><%= gallery.name.charAt(0).toUpperCase() + gallery.name.substr(1); %></h3>
+      <div class="row">
+        <% gallery.images.forEach(function(image){ %>
+          <div class="col-3">
+            <div class="card">
+              <img class="card-img-top" src="<%= image.url %>">
+              <div class="card-body">
+                <h3 class="card-text"><%= image.title %></h3>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% }); %>
+
+  </div>
+</body>
+</html>
